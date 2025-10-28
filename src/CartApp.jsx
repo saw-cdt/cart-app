@@ -1,7 +1,12 @@
+import { CatalogView } from "./components/CatalogView";
+
 export const CartApp = () => {
   return (
     <>
-      <h1>Cart App</h1>
+      <div className="container">
+        <h3>Cart App</h3>
+        <CatalogView />
+      </div>
     </>
   );
 };
