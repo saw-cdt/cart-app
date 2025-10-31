@@ -6,6 +6,7 @@ export const CartView = ({ handlerDelete, items }) => {
 
   useEffect(() => {
     setTotal(calculateTotal(items));
+    localStorage.setItem('cart',JSON.stringify(items));
   }, [items]);
 
   const onDeleteProduct = (id) => {
