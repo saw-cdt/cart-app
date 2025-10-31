@@ -34,7 +34,7 @@ export const CartApp = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container my-4">
         <h3>Cart App</h3>
 
         <CatalogView handler={handlerAppProductCart} />
