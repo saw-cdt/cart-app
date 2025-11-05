@@ -1,38 +1,33 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { CartView } from "./components/CartView";
 import { CatalogView } from "./components/CatalogView";
+import { itemsReducer } from "./reducer/itemsReducer";
 
 const initialCartItems = JSON.parse(localStorage.getItem("cart") || "[]");
 
 export const CartApp = () => {
-  const [cartItems, setCartItems] = useState(initialCartItems);
+  const [cartItems, dispatch] = useReducer(itemsReducer, initialCartItems);
 
   const handlerAppProductCart = (product) => {
     const hasItem = cartItems.find((i) => i.product.id === product.id);
     if (hasItem) {
-      setCartItems(
-        cartItems.map((i) => {
-          if (i.product.id === product.id) {
-            i.quantity = i.quantity + 1;
-          }
-          return i;
-        })
-      );
+      dispatch({
+        type: "UpdateProductCart",
+        payload: product,
+      });
     } else {
-      setCartItems([
-        ...cartItems,
-        {
-          product,
-          quantity: 1,
-        },
-      ]);
+      dispatch({
+        type: "AddProductCart",
+        payload: product,
+      });
     }
   };
 
   const handlerDeleteProduct = (id) => {
-    const updatedCartItems = [...cartItems.filter((i) => i.product.id !== id)];
-    setCartItems(updatedCartItems);
-    localStorage.setItem("cart", JSON.stringify(updatedCartItems));
+    dispatch({
+      type: "DeleteProductCart",
+      payload: id,
+    });
   };
 
   return (
