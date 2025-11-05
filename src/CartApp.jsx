@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CartView } from "./components/CartView";
 import { CatalogView } from "./components/CatalogView";
 
-const initialCartItems = JSON.parse(localStorage.getItem('cart') || []);
+const initialCartItems = JSON.parse(localStorage.getItem("cart") || "[]");
 
 export const CartApp = () => {
   const [cartItems, setCartItems] = useState(initialCartItems);
@@ -32,7 +32,7 @@ export const CartApp = () => {
   const handlerDeleteProduct = (id) => {
     const updatedCartItems = [...cartItems.filter((i) => i.product.id !== id)];
     setCartItems(updatedCartItems);
-    localStorage.setItem('cart', JSON.stringify(updatedCartItems));
+    localStorage.setItem("cart", JSON.stringify(updatedCartItems));
   };
 
   return (
