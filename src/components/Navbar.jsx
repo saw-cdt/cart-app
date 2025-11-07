@@ -1,21 +1,18 @@
+import { NavLink } from "react-router-dom";
+
 export const Navbar = () => {
   return (
     <>
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">
-            Home
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+      <ul className="nav nav-tabs">
+        <li className="nav-item">
+          <NavLink className={"nav-link"} to="/catalog">
             Catalog
-          </a>
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+        <li className="nav-item">
+          <NavLink className={"nav-link"} to="/cart">
             Cart
-          </a>
+          </NavLink>
         </li>
       </ul>
     </>

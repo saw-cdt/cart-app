@@ -15,7 +15,7 @@ export const useItemsCart = () => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const handlerAppProductCart = (product) => {
+  const handlerAddProductCart = (product) => {
     const hasItem = cartItems.find((i) => i.product.id === product.id);
     if (hasItem) {
       dispatch({
@@ -39,7 +39,7 @@ export const useItemsCart = () => {
 
   return {
     cartItems,
-    handlerAppProductCart,
+    handlerAddProductCart,
     handlerDeleteProduct,
   };
 };
